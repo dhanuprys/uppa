@@ -33,17 +33,17 @@ xset s off
 xset -dpms
 
 # preload compton and fluxbox to cache
-(compton --help; fluxbox --help; xfce4-panel --help) >/dev/null 2>&1
+# (compton --help; fluxbox --help; xfce4-panel --help) >/dev/null 2>&1
 
 # Keep black screen for first second while the sound plays.
 # This slows startup a little, but it is nicer effect.
-SND=/usr/share/sounds/startup.wav
-if [ -r $SND ]; then
-   cat $SND > /dev/null # preload
-   aplay $SND &
-   sleep 1 &
-   SOUNDPID=$!
-fi
+# SND=/usr/share/sounds/startup.wav
+# if [ -r $SND ]; then
+#    cat $SND > /dev/null # preload
+#    aplay $SND &
+#    sleep 1 &
+#    SOUNDPID=$!
+# fi
 
 # Debian-local change:
 #   - fbautostart has been added with a quick hack to check to see if it
@@ -58,31 +58,31 @@ fi
 # which is created by fluxbox at the phase when it sets background.
 # Once the file exist, fluxbox-toolbar is already started
 
-SIGNAL1=~/.fehbg
-SIGNAL2=~/.fehbg2
+# SIGNAL1=~/.fehbg
+# SIGNAL2=~/.fehbg2
 
-rm -f $SIGNAL1 2>/dev/null
-rm -f $SIGNAL2 2>/dev/null
+# rm -f $SIGNAL1 2>/dev/null
+# rm -f $SIGNAL2 2>/dev/null
 
-(
-   while [ ! -e $SIGNAL1 ]; do
-      sleep 0.1
-   done
-   touch $SIGNAL2
+# (
+#    while [ ! -e $SIGNAL1 ]; do
+#       sleep 0.1
+#    done
+#    touch $SIGNAL2
 
-   exec compton --sw-opti -e 0.9 --shadow-exclude 'class_g="xlunch-windowed"' --fade-exclude 'role*="fluxbox-toolbar"' --opacity-rule '70:role*="fluxbox-toolbar"' --no-fading-destroyed-argb -D 5 -c -f -l -2 -t -2 -r 0 -o 1 -z --shadow-exclude 'bounding_shaped'
-) &
+#    exec compton --sw-opti -e 0.9 --shadow-exclude 'class_g="xlunch-windowed"' --fade-exclude 'role*="fluxbox-toolbar"' --opacity-rule '70:role*="fluxbox-toolbar"' --no-fading-destroyed-argb -D 5 -c -f -l -2 -t -2 -r 0 -o 1 -z --shadow-exclude 'bounding_shaped'
+# ) &
 
 # We wait after background is set and compton is started
-(
-   while [ ! -e $SIGNAL2 ]; do
-      sleep 0.1
-   done
+# (
+#    while [ ! -e $SIGNAL2 ]; do
+#       sleep 0.1
+#    done
 
-   rm -f $SIGNAL2
+#    rm -f $SIGNAL2
 
-   exec volumeicon
-) &
+#    exec volumeicon
+# ) &
 
 # gen screen resolutions to fluxbox menu
 xrandr 2>/dev/null | fgrep x | fgrep . | sort -n | tr -s " " | cut -d " " -f 2 \
@@ -90,7 +90,7 @@ xrandr 2>/dev/null | fgrep x | fgrep . | sort -n | tr -s " " | cut -d " " -f 2 \
 
 # In all cases, wait for the sound sleeper.
 # If startup took longer (sound completed already), no extra wait
-wait $SOUNDPID
+# wait $SOUNDPID
 
 # If we are running inside VirtualBox or vmware,
 # switch to bigger screen size right away
@@ -105,12 +105,12 @@ fi
 # OVERRIDE: mematikan panel
 # xfce4-panel --disable-wm-check --sm-client-disable &
 
-(
-   while [ "$(wmctrl -l | grep xfce4-panel)" = "" ]; do
-      sleep 0.1
-   done
-   xprop -id $(wmctrl -l | grep xfce4-panel | cut -d " " -f 1) -format _NET_WM_STRUT 32c -set _NET_WM_STRUT "0,0,0,52"
-) &
+# (
+#    while [ "$(wmctrl -l | grep xfce4-panel)" = "" ]; do
+#       sleep 0.1
+#    done
+#    xprop -id $(wmctrl -l | grep xfce4-panel | cut -d " " -f 1) -format _NET_WM_STRUT 32c -set _NET_WM_STRUT "0,0,0,52"
+# ) &
 
 #######################################################################
 # Start the Python 3 HTTP server in the background
