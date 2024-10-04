@@ -2,7 +2,7 @@ session.screen0.slit.maxOver:	false
 session.screen0.slit.placement:	TopLeft
 session.screen0.slit.layer:	Dock
 session.screen0.slit.onhead:	0
-session.screen0.slit.acceptKdeDockapps:	true
+session.screen0.slit.acceptKdeDockapps:	false
 session.screen0.slit.alpha:	255
 session.screen0.slit.autoHide:	false
 session.screen0.menu.alpha:	255
