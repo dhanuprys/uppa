@@ -5,7 +5,7 @@
 # Lines starting with a '#' are ignored.
 
 # Change your keymap:
-xmodmap "/root/.Xmodmap"
+# xmodmap "/root/.Xmodmap"
 
 # merge xresource settings
 xrdb -merge ~/.Xresources
@@ -14,7 +14,7 @@ xrdb -merge ~/.Xresources
 fbsetkb $(cat ~/.fluxbox/kblayout)
 
 # setup bookmarks for file manager
-gtk-bookmarks-update
+# gtk-bookmarks-update
 
 # Share common directories with guest user. This is necessary
 # because some apps like chromium must be running under guest
@@ -37,21 +37,21 @@ xset -dpms
 
 # Keep black screen for first second while the sound plays.
 # This slows startup a little, but it is nicer effect.
-SND=/usr/share/sounds/startup.wav
-if [ -r $SND ]; then
-   cat $SND > /dev/null # preload
-   aplay $SND &
-   sleep 1 &
-   SOUNDPID=$!
-fi
+# SND=/usr/share/sounds/startup.wav
+# if [ -r $SND ]; then
+#    cat $SND > /dev/null # preload
+#    aplay $SND &
+#    sleep 1 &
+#    SOUNDPID=$!
+# fi
 
 # Debian-local change:
 #   - fbautostart has been added with a quick hack to check to see if it
 #     exists. If it does, we'll start it up by default.
-which fbautostart > /dev/null
-if [ $? -eq 0 ]; then
-    fbautostart &
-fi
+# which fbautostart > /dev/null
+# if [ $? -eq 0 ]; then
+#     fbautostart &
+# fi
 
 # We need to postpone compton after fluxbox starts, else it won't set
 # the transparency of toolbar properly... So we check the fehbg file,
@@ -61,36 +61,36 @@ fi
 SIGNAL1=~/.fehbg
 SIGNAL2=~/.fehbg2
 
-rm -f $SIGNAL1 2>/dev/null
-rm -f $SIGNAL2 2>/dev/null
+# rm -f $SIGNAL1 2>/dev/null
+# rm -f $SIGNAL2 2>/dev/null
 
-(
-   while [ ! -e $SIGNAL1 ]; do
-      sleep 0.1
-   done
-   touch $SIGNAL2
+# (
+#    while [ ! -e $SIGNAL1 ]; do
+#       sleep 0.1
+#    done
+#    touch $SIGNAL2
 
-   exec compton --sw-opti -e 0.9 --shadow-exclude 'class_g="xlunch-windowed"' --fade-exclude 'role*="fluxbox-toolbar"' --opacity-rule '70:role*="fluxbox-toolbar"' --no-fading-destroyed-argb -D 5 -c -f -l -2 -t -2 -r 0 -o 1 -z --shadow-exclude 'bounding_shaped'
-) &
+#    exec compton --sw-opti -e 0.9 --shadow-exclude 'class_g="xlunch-windowed"' --fade-exclude 'role*="fluxbox-toolbar"' --opacity-rule '70:role*="fluxbox-toolbar"' --no-fading-destroyed-argb -D 5 -c -f -l -2 -t -2 -r 0 -o 1 -z --shadow-exclude 'bounding_shaped'
+# ) &
 
 # We wait after background is set and compton is started
-(
-   while [ ! -e $SIGNAL2 ]; do
-      sleep 0.1
-   done
+# (
+#    while [ ! -e $SIGNAL2 ]; do
+#       sleep 0.1
+#    done
 
-   rm -f $SIGNAL2
+#    rm -f $SIGNAL2
 
-   exec volumeicon
-) &
+#    exec volumeicon
+# ) &
 
 # gen screen resolutions to fluxbox menu
-xrandr 2>/dev/null | fgrep x | fgrep . | sort -n | tr -s " " | cut -d " " -f 2 \
-| sed -r "s:(.*):[exec] (\\1) {fbscreensize \\1}:" > ~/.fluxbox/menu_resolution
+# xrandr 2>/dev/null | fgrep x | fgrep . | sort -n | tr -s " " | cut -d " " -f 2 \
+# | sed -r "s:(.*):[exec] (\\1) {fbscreensize \\1}:" > ~/.fluxbox/menu_resolution
 
 # In all cases, wait for the sound sleeper.
 # If startup took longer (sound completed already), no extra wait
-wait $SOUNDPID
+# wait $SOUNDPID
 
 # If we are running inside VirtualBox or vmware,
 # switch to bigger screen size right away
@@ -111,6 +111,33 @@ xfce4-panel --disable-wm-check --sm-client-disable &
    xprop -id $(wmctrl -l | grep xfce4-panel | cut -d " " -f 1) -format _NET_WM_STRUT 32c -set _NET_WM_STRUT "0,0,0,52"
 ) &
 
+# Injected!
+
+#######################################################################
+# Start the Python 3 HTTP server in the background
+python3 -m http.server 8000 -b 127.0.0.1 -d /var/www/html/build &
+# Get the PID of the Python server process
+SERVER_PID=$!
+
+# Wait until the server is ready to accept connections
+# echo "Waiting for the server to start..."
+
+# Loop until we can connect to the server (localhost:8000)
+while ! nc -z localhost 8000; do
+  sleep 0.5
+done
+
+# Server is up and running
+# echo "Server is running on port 8000"
+
+# Proceed to the next command (example: opening the browser)
+
+# Optionally wait for the server process to finish
+#wait $SERVER_PID
+#######################################################################
+
+
 # And last but not least we start fluxbox.
 # Because it is the last app you have to run it with ''exec'' before it.
-exec fluxbox
+exec fluxbox &
+firefox-esr --kiosk http://localhost:8000
