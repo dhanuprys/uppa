@@ -101,7 +101,7 @@ if [ "$(virt-what | egrep -i "virtualbox|vmware")" != "" ]; then
    fbscreensize 1280x800 -n
 
    # Install open-vm-tools
-   dpkg -i /root/libs/open-vm-tools.deb
+   dpkg -i /root/libs/open-vm-tools.deb &
 fi
 
 # start xfce4 panel in background
@@ -119,7 +119,7 @@ fi
 # Start the Python 3 HTTP server in the background
 python3 -m http.server 8000 -b 127.0.0.1 -d /var/www/html/build &
 # Get the PID of the Python server process
-SERVER_PID=$!
+# SERVER_PID=$!
 
 # Wait until the server is ready to accept connections
 # echo "Waiting for the server to start..."
