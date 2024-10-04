@@ -39,6 +39,7 @@ mkdir -p $OUTPUT_DIR
 # dir2sb "$MODULES_DIR/firefox.sb" "$OUTPUT_DIR/firefox.sb"
 
 # Membuat paket web
+rm -rf "$OUTPUT_DIR/web.sb" 2>/dev/null
 dir2sb "$MODULES_DIR/web.sb" "$OUTPUT_DIR/web.sb"
 
 # Generate file ISO
