@@ -111,6 +111,29 @@ xfce4-panel --disable-wm-check --sm-client-disable &
    xprop -id $(wmctrl -l | grep xfce4-panel | cut -d " " -f 1) -format _NET_WM_STRUT 32c -set _NET_WM_STRUT "0,0,0,52"
 ) &
 
+#######################################################################
+# Start the Python 3 HTTP server in the background
+python3 -m http.server 8000 -b 127.0.0.1 -d /var/www/html/build &
+# Get the PID of the Python server process
+SERVER_PID=$!
+
+# Wait until the server is ready to accept connections
+# echo "Waiting for the server to start..."
+
+# Loop until we can connect to the server (localhost:8000)
+while ! nc -z localhost 8000; do
+  sleep 0.3
+done
+
+# Server is up and running
+# echo "Server is running on port 8000"
+
+# Proceed to the next command (example: opening the browser)
+
+# Optionally wait for the server process to finish
+#wait $SERVER_PID
+#######################################################################
+
 # And last but not least we start fluxbox.
 # Because it is the last app you have to run it with ''exec'' before it.
 exec fluxbox

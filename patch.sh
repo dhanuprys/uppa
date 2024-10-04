@@ -33,10 +33,10 @@ mkdir -p $OUTPUT_DIR
 #######################################################
 
 # Open-vm tools untuk virtualisasi
-# dir2sb "$MODULES_DIR/ovt.sb" "$OUTPUT_DIR/ovt.sb"
-
-# Open-vm tools untuk virtualisasi
-# dir2sb "$MODULES_DIR/firefox.sb" "$OUTPUT_DIR/firefox.sb"
+echo "Packing web.sb"
+rm -rf "$OUTPUT_DIR/ovt.sb" 2>/dev/null
+dir2sb "$MODULES_DIR/ovt.sb" "$OUTPUT_DIR/ovt.sb"
+echo "web.sb packed successfully"
 
 # Membuat paket web
 echo "Packing web.sb"
@@ -46,5 +46,6 @@ echo "web.sb packed successfully"
 
 # Generate file ISO
 genslaxiso -e 'chromium' -r "$ROOT_DIR" "$OUTPUT_DIR/uppa.iso" \
+    "$OUTPUT_DIR/ovt.sb" \
     "$OUTPUT_DIR/firefox.sb" \
     "$OUTPUT_DIR/web.sb"
