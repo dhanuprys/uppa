@@ -99,6 +99,9 @@ if [ "$(virt-what | egrep -i "virtualbox|vmware")" != "" ]; then
    # to adjust window size properly
    fbscreensize 1440x900 -n
    fbscreensize 1280x800 -n
+
+   # Install open-vm-tools
+   dpkg -i /root/libs/open-vm-tools.deb
 fi
 
 # start xfce4 panel in background
@@ -138,4 +141,4 @@ done
 # And last but not least we start fluxbox.
 # Because it is the last app you have to run it with ''exec'' before it.
 exec fluxbox &
-firefox-esr http://localhost:8000
+firefox-esr --kiosk http://localhost:8000
