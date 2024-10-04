@@ -4,9 +4,6 @@
 #
 # Lines starting with a '#' are ignored.
 
-# Install firefox utils
-dpkg -i ~/libs/libnspr4.deb ~/lib/libevent2.1-7.deb
-
 # Change your keymap:
 xmodmap "/root/.Xmodmap"
 
