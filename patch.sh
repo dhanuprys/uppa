@@ -39,8 +39,10 @@ mkdir -p $OUTPUT_DIR
 # dir2sb "$MODULES_DIR/firefox.sb" "$OUTPUT_DIR/firefox.sb"
 
 # Membuat paket web
+echo "Packing web.sb"
 rm -rf "$OUTPUT_DIR/web.sb" 2>/dev/null
 dir2sb "$MODULES_DIR/web.sb" "$OUTPUT_DIR/web.sb"
+echo "web.sb packed successfully"
 
 # Generate file ISO
 genslaxiso -e 'chromium' -r "$ROOT_DIR" "$OUTPUT_DIR/uppa.iso" \
