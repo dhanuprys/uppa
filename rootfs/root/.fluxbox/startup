@@ -14,7 +14,7 @@ xrdb -merge ~/.Xresources
 fbsetkb $(cat ~/.fluxbox/kblayout)
 
 # setup bookmarks for file manager
-gtk-bookmarks-update
+# gtk-bookmarks-update
 
 # Share common directories with guest user. This is necessary
 # because some apps like chromium must be running under guest
@@ -102,7 +102,8 @@ if [ "$(virt-what | egrep -i "virtualbox|vmware")" != "" ]; then
 fi
 
 # start xfce4 panel in background
-xfce4-panel --disable-wm-check --sm-client-disable &
+# OVERRIDE: mematikan panel
+# xfce4-panel --disable-wm-check --sm-client-disable &
 
 (
    while [ "$(wmctrl -l | grep xfce4-panel)" = "" ]; do
