@@ -49,7 +49,7 @@ function MainPage() {
         <div className="flex overflow-hidden min-h-screen">
             {/* <OfflineCheck /> */}
 
-            <div onMouseEnter={() => setBlur(true)} onMouseOver={() => setBlur(true)} onMouseOut={() => setBlur(false)} onMouseLeave={() => setBlur(false)} className={`overflow-x-hidden bg-white shadow transition-all max-w-[400px] hover:max-w-[500px] ${sidebarOpen && sidebarPayload ? '' : '!max-w-[0]'}`}>
+            <div onMouseEnter={() => setBlur(true)} onMouseOver={() => setBlur(true)} onMouseOut={() => setBlur(false)} onMouseLeave={() => setBlur(false)} className={`overflow-x-hidden bg-white shadow transition-all max-w-[400px] hover:max-w-[440px] ${sidebarOpen && sidebarPayload ? '' : '!max-w-[0]'}`}>
                {sidebarMode === 'place_list' && <PlaceListSBLayout places={places} openLocationDetail={openLocationDetail} />}
                {/* {sidebarMode === 'place_detail' && <PlaceDetailSBLayout place={placeDetail} backToMap={backToMap} />} */}
 

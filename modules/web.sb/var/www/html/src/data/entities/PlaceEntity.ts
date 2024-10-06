@@ -16,7 +16,8 @@ class PlaceEntity {
         public category: string,
         public coordinate: LatLngExpression,
         public images: PlaceImage[] = [],
-        public vistaIndex: number
+        public vistaIndex: number,
+        public iconUrl: string
     ) {}
 }
 

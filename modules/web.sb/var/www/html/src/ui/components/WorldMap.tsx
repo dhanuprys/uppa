@@ -8,20 +8,6 @@ import calculateDistance from '../../utils/calculateDistance';
 import BuildingIcon from '../../assets/images/building.png';
 import useBaseLayoutStore from '../stores/baseLayoutStore';
 
-const markerIcon = new L.Icon({
-    iconUrl: BuildingIcon,
-    iconSize: [20, 20],
-    iconAnchor: [7, 18],
-    popupAnchor: [0, -34],
-});
-
-const markerIconActive = new L.Icon({
-    iconUrl: BuildingIcon,
-    iconSize: [30, 30],
-    iconAnchor: [13, 22],
-    popupAnchor: [0, -34],
-});
-
 function WorldMap({ places, activePlace, onPlaceClick, requestRestart }: { activePlace: PlaceEntity | null, places: PlaceEntity[], onPlaceClick: (place: PlaceEntity) => void, requestRestart: () => void }) {
     const position = [-8.1329829, 115.1321591];
     const coord = useState<[number, number][]>([]);
@@ -79,6 +65,20 @@ function WorldMap({ places, activePlace, onPlaceClick, requestRestart }: { activ
                 <TileLayer url="/tiles/{z}/{x}/{y}.jpg" maxZoom={25} maxNativeZoom={25} />
                 {
                     places && places.map((place) => {
+                        const markerIcon = new L.Icon({
+                            iconUrl: place.iconUrl,
+                            iconSize: [20, 20],
+                            iconAnchor: [7, 12],
+                            popupAnchor: [0, -34],
+                        });
+                        
+                        const markerIconActive = new L.Icon({
+                            iconUrl: place.iconUrl,
+                            iconSize: [30, 30],
+                            iconAnchor: [13, 14],
+                            popupAnchor: [0, -34],
+                        });
+
                         return (
                             <Marker
                                 key={place.id}

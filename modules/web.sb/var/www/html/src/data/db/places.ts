@@ -1,4 +1,7 @@
 import PlaceEntity from '../entities/PlaceEntity';
+import BuildingIcon from '../../assets/images/building.png';
+import SoccerIcon from '../../assets/images/soccer.png';
+import PuraIcon from '../../assets/images/pura.png';
 
 const places: PlaceEntity[] = [
     {
@@ -9,7 +12,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 17,
         coordinate: [-8.134964, 115.133820],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
     {
         id: 'ga-2',
@@ -19,7 +23,8 @@ const places: PlaceEntity[] = [
         category: 'Pura',
         vistaIndex: 29,
         coordinate: [-8.134786, 115.134582],
-        images: []
+        images: [],
+        iconUrl: PuraIcon
     },
     {
         id: 'ga-3',
@@ -29,7 +34,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 13,
         coordinate: [-8.134406, 115.133399],
-        images: []
+        images: [],
+        iconUrl: SoccerIcon
     },
     {
         id: 'ga-4',
@@ -39,7 +45,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 30,
         coordinate: [-8.133288, 115.132981],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
     {
         id: 'ga-5',
@@ -49,7 +56,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 83,
         coordinate: [-8.133177, 115.132498],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
     {
         id: 'ga-6',
@@ -59,7 +67,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 90,
         coordinate: [-8.132909, 115.132548],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
     {
         id: 'ga-7',
@@ -69,7 +78,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 76,
         coordinate: [-8.133139, 115.132069],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
     {
         id: 'ga-8',
@@ -79,7 +89,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 52,
         coordinate: [-8.132201, 115.131984],
-        images: []
+        images: [],
+        iconUrl: SoccerIcon
     },
     {
         id: 'ga-9',
@@ -89,7 +100,8 @@ const places: PlaceEntity[] = [
         category: 'Ruang Lapang',
         vistaIndex: 45,
         coordinate: [-8.131670, 115.131717],
-        images: []
+        images: [],
+        iconUrl: SoccerIcon
     },
     {
         id: 'ga-10',
@@ -99,7 +111,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 72,
         coordinate: [-8.133552, 115.132728],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
     {
         id: 'ga-11',
@@ -109,7 +122,8 @@ const places: PlaceEntity[] = [
         category: 'Ruang Lapang',
         vistaIndex: 53,
         coordinate: [-8.132901, 115.133025],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
     {
         id: 'ga-12',
@@ -119,7 +133,8 @@ const places: PlaceEntity[] = [
         category: 'Gedung',
         vistaIndex: 19,
         coordinate: [-8.135307, 115.133389],
-        images: []
+        images: [],
+        iconUrl: BuildingIcon
     },
 ];
 
