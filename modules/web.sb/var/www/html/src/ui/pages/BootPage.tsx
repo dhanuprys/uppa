@@ -40,7 +40,7 @@ function BootPage() {
         }, 100);
 
         return () => { clearInterval(intervalId) }
-    }, []);
+    }, [navigate]);
 
     return (
         <div className="w-screen h-screen flex flex-col gap-6 justify-center items-center">

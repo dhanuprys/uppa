@@ -14,7 +14,7 @@ function PlaceListSBLayout({ openLocationDetail, places }: { openLocationDetail:
         const changePlace = (event: KeyboardEvent) => {
             event.preventDefault();
 
-            let currentPlaceIndex = places.findIndex((v) => { return v == activePlace });
+            let currentPlaceIndex = places.findIndex((v) => v === activePlace);
             const pressedKey = event.key.toLowerCase();
             let nextIndex = 0;
 

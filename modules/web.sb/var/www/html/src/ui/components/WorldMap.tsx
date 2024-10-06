@@ -1,11 +1,10 @@
 import L, { LatLngExpression } from 'leaflet';
 import 'leaflet.offline';
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, Marker, Polyline, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, Marker, Polyline, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import PlaceEntity from '../../data/entities/PlaceEntity';
 import { useEffect, useState } from 'react';
 import calculateDistance from '../../utils/calculateDistance';
-import BuildingIcon from '../../assets/images/building.png';
 import useBaseLayoutStore from '../stores/baseLayoutStore';
 
 function WorldMap({ places, activePlace, onPlaceClick, requestRestart }: { activePlace: PlaceEntity | null, places: PlaceEntity[], onPlaceClick: (place: PlaceEntity) => void, requestRestart: () => void }) {
@@ -63,6 +62,7 @@ function WorldMap({ places, activePlace, onPlaceClick, requestRestart }: { activ
         <div className="size-full max-w-full max-h-full overflow-hidden relative">
             <MapContainer className="size-full scale-[1.9] !bg-black" zoomControl={false} scrollWheelZoom={false} center={position as LatLngExpression} maxZoom={18} zoom={22}>
                 <TileLayer url="/tiles/{z}/{x}/{y}.jpg" maxZoom={25} maxNativeZoom={25} />
+                {/* <TileLayer url="http://localhost:8800/{x}/{y}" maxZoom={25} maxNativeZoom={25} /> */}
                 {
                     places && places.map((place) => {
                         const markerIcon = new L.Icon({

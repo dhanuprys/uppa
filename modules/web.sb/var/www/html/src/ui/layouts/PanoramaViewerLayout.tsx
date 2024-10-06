@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import Button from '../components/Button';
-import useBaseLayoutStore from '../stores/baseLayoutStore';
 import RestiImage from '../../assets/images/resti.jpg';
 import PlaceEntity from '../../data/entities/PlaceEntity';
 import { IoMdMap } from 'react-icons/io';

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PlaceEntity from '../../data/entities/PlaceEntity';
 import LocalPlaceRepository from '../../data/repositories/LocalPlaceRepository';
 import MapViewerLayout from '../layouts/MapViewerLayout';
@@ -9,7 +9,6 @@ import useBaseLayoutStore from '../stores/baseLayoutStore';
 function MainPage() {
     const {
         viewMode,
-        viewPayload,
         sidebarMode,
         sidebarOpen,
         sidebarPayload,
@@ -18,8 +17,6 @@ function MainPage() {
         activePlace,
         setActivePlace
     } = useBaseLayoutStore();
-
-    const [isBlur, setBlur] = useState(false);
 
     const placeRepository = useMemo(() => {
         return new LocalPlaceRepository();
@@ -49,7 +46,7 @@ function MainPage() {
         <div className="flex overflow-hidden min-h-screen">
             {/* <OfflineCheck /> */}
 
-            <div onMouseEnter={() => setBlur(true)} onMouseOver={() => setBlur(true)} onMouseOut={() => setBlur(false)} onMouseLeave={() => setBlur(false)} className={`overflow-x-hidden bg-white shadow transition-all max-w-[400px] hover:max-w-[440px] ${sidebarOpen && sidebarPayload ? '' : '!max-w-[0]'}`}>
+            <div className={`overflow-x-hidden bg-white shadow transition-all max-w-[400px] hover:max-w-[440px] ${sidebarOpen && sidebarPayload ? '' : '!max-w-[0]'}`}>
                {sidebarMode === 'place_list' && <PlaceListSBLayout places={places} openLocationDetail={openLocationDetail} />}
                {/* {sidebarMode === 'place_detail' && <PlaceDetailSBLayout place={placeDetail} backToMap={backToMap} />} */}
 
