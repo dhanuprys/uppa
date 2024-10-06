@@ -87,7 +87,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Ruang Lapang',
-        vistaIndex: 52,
+        vistaIndex: 45,
         coordinate: [-8.131670, 115.131717],
         images: []
     },
