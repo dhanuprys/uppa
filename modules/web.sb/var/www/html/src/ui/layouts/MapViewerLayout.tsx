@@ -46,7 +46,7 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                             <div className="flex gap-4">
                                 <button className="text-xl bg-white px-6 py-3 rounded-full font-semibold flex gap-2 items-center hover:animate-pulse" onClick={() => { openLocationDetail(activePlace!); setOpen(false) }}>
                                     <TbView360Number />
-                                    Buka di StreetView
+                                    Buka di WorldView
                                 </button>
                                 <button className="text-xl text-white border-2 border-white px-6 py-3 rounded-full font-semibold" onClick={() => setOpen(false)}>Kembali ke peta</button>
                             </div>

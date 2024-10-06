@@ -7,7 +7,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 17,
         coordinate: [-8.134964, 115.133820],
         images: []
     },
@@ -27,7 +27,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 13,
         coordinate: [-8.134406, 115.133399],
         images: []
     },
@@ -37,7 +37,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 30,
         coordinate: [-8.133288, 115.132981],
         images: []
     },
@@ -47,7 +47,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 83,
         coordinate: [-8.133177, 115.132498],
         images: []
     },
@@ -57,7 +57,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 90,
         coordinate: [-8.132909, 115.132548],
         images: []
     },
@@ -67,7 +67,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 76,
         coordinate: [-8.133139, 115.132069],
         images: []
     },
@@ -87,7 +87,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Ruang Lapang',
-        vistaIndex: 45,
+        vistaIndex: 52,
         coordinate: [-8.131670, 115.131717],
         images: []
     },
@@ -97,7 +97,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 72,
         coordinate: [-8.133552, 115.132728],
         images: []
     },
@@ -107,7 +107,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Ruang Lapang',
-        vistaIndex: 63,
+        vistaIndex: 53,
         coordinate: [-8.132901, 115.133025],
         images: []
     },
@@ -117,7 +117,7 @@ const places: PlaceEntity[] = [
         description: '',
         location: '',
         category: 'Gedung',
-        vistaIndex: 10,
+        vistaIndex: 19,
         coordinate: [-8.135307, 115.133389],
         images: []
     },
