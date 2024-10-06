@@ -117,7 +117,7 @@ fi
 
 #######################################################################
 # Start the Python 3 HTTP server in the background
-python3 -m http.server 8000 -b 127.0.0.1 -d /var/www/html/build &
+# python3 -m http.server 8000 -b 127.0.0.1 -d /var/www/html/build &
 # Get the PID of the Python server process
 # SERVER_PID=$!
 
@@ -125,9 +125,9 @@ python3 -m http.server 8000 -b 127.0.0.1 -d /var/www/html/build &
 # echo "Waiting for the server to start..."
 
 # Loop until we can connect to the server (localhost:8000)
-while ! nc -z localhost 8000; do
-  sleep 0.3
-done
+# while ! nc -z localhost 8000; do
+#   sleep 0.3
+# done
 
 # Server is up and running
 # echo "Server is running on port 8000"
