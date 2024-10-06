@@ -3,10 +3,8 @@ import PlaceEntity from '../../data/entities/PlaceEntity';
 import LocalPlaceRepository from '../../data/repositories/LocalPlaceRepository';
 import MapViewerLayout from '../layouts/MapViewerLayout';
 import PanoramaViewerLayout from '../layouts/PanoramaViewerLayout';
-import PlaceDetailSBLayout from '../layouts/PlaceDetailSBLayout';
 import PlaceListSBLayout from '../layouts/PlaceListSBLayout';
 import useBaseLayoutStore from '../stores/baseLayoutStore';
-import OfflineCheck from '../layouts/OfflineCheck';
 
 function MainPage() {
     const {
@@ -22,10 +20,6 @@ function MainPage() {
     } = useBaseLayoutStore();
 
     const [isBlur, setBlur] = useState(false);
-
-    useEffect(() => {
-
-    }, []);
 
     const placeRepository = useMemo(() => {
         return new LocalPlaceRepository();
@@ -62,7 +56,7 @@ function MainPage() {
                <div className="absolute right-0 top-0"></div>
             </div>
             <div className="relative flex-1">
-                <div className={`absolute z-[53] size-full top-0 left-0 bg-black pointer-events-none opacity-0 transition-all delay-[500ms] duration-[600ms] flex justify-center items-center flex-col gap-y-5 ${isBlur ? 'opacity-80' : ''}`}>
+                {/* <div className={`absolute z-[53] size-full top-0 left-0 bg-black pointer-events-none opacity-0 transition-all delay-[500ms] duration-[600ms] flex justify-center items-center flex-col gap-y-5 ${isBlur ? 'opacity-80' : ''}`}>
                     <img src="/uppa-white.svg" />
                     <h1 className="text-white text-4xl">Undiksha MAPPA</h1>
                     <ul className="text-white text-xl [&>*]:text-center">
@@ -71,7 +65,7 @@ function MainPage() {
                         <li>Gede Dira Agastya</li>
                         <li>Ni Made Dwijothamy Oka</li>
                     </ul>
-                </div>
+                </div> */}
                 <div className={`absolute top-0 left-0 size-full transition-all duration-700 ${viewMode === 'panorama' ? '' : '-translate-y-[100vh]'}`}>
                     <PanoramaViewerLayout _3dVistaIndex={10} place={placeDetail} backToMap={backToMap} />
                     <div className={`absolute top-0 left-0 size-full bg-black opacity-0 pointer-events-none delay-[100ms] transition-[600ms] ${viewMode !== 'panorama' ? 'opacity-90': '!delay-[200ms]'}`}></div>
