@@ -50,7 +50,7 @@ function WorldMap({ places, activePlace, onPlaceClick, requestRestart }: { activ
 
                     setTimeout(() => {
                         mapInstance!.flyTo(nativeCenter);
-                    });
+                    }, 100);
                 }
             }
         });
