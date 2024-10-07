@@ -62,12 +62,12 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                     <div className={`translate-x-full transition-all duration-[500ms] opacity-0 ${activePlace ? '!translate-x-0 opacity-100 shadow-2xl' : ''}`}>
                         <div className={`p-4 rounded-xl bg-white shadow-2xl border-l-4 border-l-blue-700 min-w-[400px] max-w-[450px] transition-all duration-[700ms] ${isOpen ? 'min-w-[800px] max-w-[850px]' : ''} flex gap-4`}>
                             <div>
-                                <TbRouteAltRight className={`text-5xl transition-all ${isOpen ? 'hidden' : ''} mt-3 animate-pulse`} />
+                                <TbRouteAltRight className={`text-5xl transition-all ${isOpen ? 'hidden' : ''} mt-3`} />
                             </div>
                             <div className="space-y-2">
-                                <h2 className={`text-xl transition-all ${isOpen ? '!text-2xl' : ''}`}>{activePlace?.name}</h2>
+                                <h2 className={`text-xl transition-all`}>{activePlace?.name}</h2>
                                 <div className="h-auto">
-                                    {!isOpen && <p className="font-light text-sm text-slate-700">{activePlace?.description.slice(0, 120) + '...'}</p>}
+                                    {activePlace && <p className="font-light text-sm text-slate-700">{activePlace?.description.slice(0, 120) + '...'}</p>}
                                 </div>
                                 <div className="space-x-2">
                                     <button className="px-5 py-1 bg-blue-700 text-white rounded text-sm" onClick={() => setOpen(true)}>buka</button>
