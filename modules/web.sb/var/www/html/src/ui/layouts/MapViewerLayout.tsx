@@ -55,9 +55,8 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                 </div>
             }
             <WorldMap places={places} activePlace={activePlace} onPlaceClick={(place) => { setActivePlace(place) }} requestRestart={() => { setRestart(true) }} />
-            <div className={`absolute z-[58] top-0 left-0 size-full bg-black flex justify-center items-center text-white transition-opacity opacity-0 ${isRestart ? 'opacity-90' : 'pointer-events-none'}`}>
-                UNDIKSHA MAPPA
-            </div>
+            {/* Block gesture when restart */}
+            {isRestart && <div className="absolute z-[58] top-0 left-0 size-full"></div>}
             <div className="absolute z-[55] top-0 right-0">
                 <div className="p-4">
                     <div className={`translate-x-full transition-all duration-[500ms] opacity-0 ${activePlace ? '!translate-x-0 opacity-100 shadow-2xl' : ''}`}>
