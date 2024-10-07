@@ -68,7 +68,7 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                             <div className="space-y-2">
                                 <h2 className={`text-xl transition-all ${isOpen ? '!text-2xl' : ''}`}>{activePlace?.name}</h2>
                                 <div className="h-auto">
-                                    {!isOpen && <p className="font-light text-sm text-slate-700">{activePlace?.description}</p>}
+                                    {!isOpen && <p className="font-light text-sm text-slate-700">{activePlace?.description.slice(0, 120) + '...'}</p>}
                                 </div>
                                 <div className="space-x-2">
                                     <button className="px-5 py-1 bg-blue-700 text-white rounded text-sm" onClick={() => setOpen(true)}>buka</button>

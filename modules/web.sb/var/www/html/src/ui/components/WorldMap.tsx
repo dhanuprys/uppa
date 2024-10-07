@@ -60,7 +60,7 @@ function WorldMap({ places, activePlace, onPlaceClick, requestRestart }: { activ
 
     return (
         <div className="size-full max-w-full max-h-full overflow-hidden relative">
-            <MapContainer className="size-full scale-[1.9] !bg-black" zoomControl={false} scrollWheelZoom={false} center={position as LatLngExpression} maxZoom={18} zoom={22}>
+            <MapContainer className="size-full scale-[1.7] lg:scale-[1.9] !bg-black" zoomControl={false} scrollWheelZoom={false} center={position as LatLngExpression} maxZoom={18} zoom={22}>
                 <TileLayer url="/tiles/{z}/{x}/{y}.jpg" maxZoom={25} maxNativeZoom={25} />
                 {/* <TileLayer url="http://localhost:8800/{x}/{y}" maxZoom={25} maxNativeZoom={25} /> */}
                 {
