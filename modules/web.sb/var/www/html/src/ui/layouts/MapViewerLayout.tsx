@@ -41,7 +41,7 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                             <div className="px-8 py-2 bg-[rgba(226,232,240,0.4)] font-semibold text-white inline rounded-full text-xl">{activePlace!.category}</div>
                             <h1 className="text-5xl font-bold text-white">{activePlace!.name}</h1>
                             <p className="text-white font-light text-lg">
-                                Magna aliquip eiusmod nulla adipisicing duis pariatur velit excepteur cillum in excepteur nostrud eiusmod amet. Quis mollit ea cupidatat labore ea nostrud voluptate. Cupidatat ut aute esse non velit nisi non pariatur nulla reprehenderit aliquip.
+                                {activePlace!.description}
                             </p>
                             <div className="flex gap-4">
                                 <button className="text-xl bg-white px-6 py-3 rounded-full font-semibold flex gap-2 items-center hover:animate-pulse" onClick={() => { openLocationDetail(activePlace!); setOpen(false) }}>
@@ -68,12 +68,11 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                             <div className="space-y-2">
                                 <h2 className={`text-xl transition-all ${isOpen ? '!text-2xl' : ''}`}>{activePlace?.name}</h2>
                                 <div className="h-auto">
-                                    {!isOpen && <p className="font-light text-sm text-slate-700">Exercitation aliqua nisi aute eiusmod laboris ipsum pariatur quis. Nulla esse laboris Lorem ipsum duis Lore</p>}
+                                    {!isOpen && <p className="font-light text-sm text-slate-700">{activePlace?.description}</p>}
                                 </div>
                                 <div className="space-x-2">
                                     <button className="px-5 py-1 bg-blue-700 text-white rounded text-sm" onClick={() => setOpen(true)}>buka</button>
                                     <button className="px-2 py-1 text-blue-500 text-sm" onClick={() => setActivePlace(null)}>kembali</button>
-
                                 </div>
                             </div>
                         </div>
