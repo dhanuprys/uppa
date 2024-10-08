@@ -37,10 +37,10 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                         <div className="absolute size-full bottom-inner-shadow"></div>
                     </div>
                     <div className="absolute size-full flex items-end">
-                        <div className="p-8 lg:p-16 max-w-[70%] md:max-w-[60%] lg:max-w-[55%] space-y-8">
+                        <div className="p-8 lg:p-16 max-w-[75%] md:max-w-[70%] lg:max-w-[65%] space-y-8">
                             <div className="px-8 py-2 bg-[rgba(226,232,240,0.4)] font-semibold text-white inline rounded-full text-xl">{activePlace!.category}</div>
                             <h1 className="text-5xl font-bold text-white">{activePlace!.name}</h1>
-                            <p className="text-white font-light text-lg">
+                            <p className="text-white font-light lg:text-lg">
                                 {activePlace!.description}
                             </p>
                             <div className="flex gap-4">
@@ -65,9 +65,9 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
                                 <TbRouteAltRight className={`text-5xl transition-all ${isOpen ? 'hidden' : ''} mt-3`} />
                             </div>
                             <div className="space-y-2">
-                                <h2 className={`text-xl transition-all`}>{activePlace?.name}</h2>
+                                <h2 className={`text-lg lg:text-xl transition-all`}>{activePlace?.name}</h2>
                                 <div className="h-auto">
-                                    {activePlace && <p className="font-light text-sm text-slate-700">{activePlace?.description.slice(0, 120) + '...'}</p>}
+                                    {activePlace && <p className="font-light text-xs lg:text-sm text-slate-700">{activePlace?.description.slice(0, 120) + '...'}</p>}
                                 </div>
                                 <div className="space-x-2">
                                     <button className="px-5 py-1 bg-blue-700 text-white rounded text-sm" onClick={() => setOpen(true)}>buka</button>
