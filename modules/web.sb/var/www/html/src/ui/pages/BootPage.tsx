@@ -16,14 +16,6 @@ function BootPage() {
         const intervalId = setInterval(() => {
             setCurrentWidth(i++);
 
-            if (i >= 30) {
-                setActiveGap(true);
-            }
-
-            if (i >= 55) {
-                setDoubleLogo(true);
-            }
-
             if (i === 100) {
                 clearInterval(intervalId);
                 setFinish(true);
@@ -36,6 +28,10 @@ function BootPage() {
                         }
                     );
                 }, 1000);
+            } else if (i >= 55) {
+                setDoubleLogo(true);
+            } else if (i >= 30) {
+                setActiveGap(true);
             }
         }, 100);
 

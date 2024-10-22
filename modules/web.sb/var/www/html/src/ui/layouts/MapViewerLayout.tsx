@@ -25,6 +25,19 @@ function MapViewerLayout({ places, activePlace, openLocationDetail }: { openLoca
         }
     }, [isRestart]);
 
+    useEffect(() => {
+        const resizeListener = () => {
+            if (window.innerWidth < 800) {
+                setSidebarOpen(false);
+            }
+        }
+
+        resizeListener();
+        window.addEventListener('resize', resizeListener); 
+
+        return () => window.removeEventListener('resize', resizeListener);
+    }, []);
+
     return (
         <div className="relative h-screen">
             {
