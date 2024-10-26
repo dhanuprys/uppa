@@ -32,7 +32,16 @@ function MainScreen({ className }: BaseProps) {
                 activePlace={activePlace}
                 onPlaceClick={place => setActivePlace(activePlace === place ? null : place)} />
             <MapSidebar
+                placeList={places}
+                activePlace={activePlace}
                 enabled={sidebarOpen}
+                onPlaceClick={place => {
+                    const isSamePlace = activePlace === place;
+                    setActivePlace(isSamePlace ? null : place);
+                    if (!isSamePlace && window.innerWidth < 768) {
+                        setSidebarOpen(false);
+                    }
+                }}
                 onToggleClick={(isEnabled) => setSidebarOpen(isEnabled)} />
             <PlaceToast
                 opened={toastOpen}

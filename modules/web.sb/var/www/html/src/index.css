@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom scrollbar for Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 6px;
+    /* thinner scrollbar width */
+    height: 6px;
+    /* thinner scrollbar height */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.4);
+    /* transparent gray with 40% opacity */
+    border-radius: 10px;
+    /* fully rounded corners */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(200, 200, 200, 0.2);
+    /* lighter transparent track */
+    border-radius: 10px;
+    /* fully rounded track corners */
+}
+
+/* Firefox Scrollbar Styles */
+* {
+    scrollbar-width: thin;
+    /* thin scrollbar */
+    scrollbar-color: rgba(100, 100, 100, 0.4) rgba(200, 200, 200, 0.2);
+    /* thumb and track colors */
+}
+
 @keyframes highlight-color {
     0% {
         background-color: purple;
