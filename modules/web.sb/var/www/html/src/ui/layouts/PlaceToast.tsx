@@ -30,7 +30,7 @@ function PlaceToast({
     return (
         <div className={`${className || ''} transition-all md:duration-300 ${opened ? 'duration-0 md:duration-500 delay-100 !w-screen !h-screen top-0 z-20' : ''} -translate-y-full md:translate-y-0 md:translate-x-full ${activePlace ? '!translate-y-0 md:!translate-x-0' : ''} fixed top-0 right-0 w-screen min-w-screen min-h-[150px] md:w-[450px] md:min-w-[500px] lg:min-w-[560px]`}>
             <div className={`transition-all md:duration-500 h-full w-full p-4 md:p-8 ${opened ? 'duration-0 md:delay-100 !p-0 md:!p-0' : ''}`}>
-                <div className={`h-full relative grid grid-cols-3 gap-4 md:items-center bg-white border shadow-sm md:shadow-xl rounded-3xl px-4 py-4 md:py-2 md:!p-4 ${opened ? 'delay-[850ms] !p-0 !rounded-none before:!hidden' : ''} before:z-[-1] before:bg-gradient-to-r before:animate-pulse before:from-blue-600 before:hidden md:before:block before:absolute before:top-0 before:left-0 before:size-full before:rounded-3xl before:-translate-x-2 before:-translate-y-2`}>
+                <div className={`h-full relative grid grid-cols-3 gap-4 md:items-center bg-white border shadow-sm md:shadow-xl rounded-3xl px-4 py-4 md:py-2 md:!p-4 ${opened ? 'delay-[850ms] !p-0 !rounded-none before:!hidden' : ''} before:z-[-1] before:bg-gradient-to-r before:from-blue-600 before:hidden md:before:block before:absolute before:top-0 before:left-0 before:size-full before:rounded-3xl before:-translate-x-2 before:-translate-y-2`}>
 
                     {/** DETAIL  */}
                     {!is360View && <div className={`flex gap-2 order-1 md:order-none ${opened ? 'col-span-3 md:col-span-1 flex-col items-center p-8' : 'col-span-3'}`}>
