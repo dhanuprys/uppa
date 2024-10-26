@@ -5,6 +5,7 @@ import WorldMap from '../layouts/WorldMap';
 import { BaseProps } from '../props';
 import LocalPlaceRepository from '../../data/repositories/LocalPlaceRepository';
 import PlaceEntity from '../../data/entities/PlaceEntity';
+import Boot from '../layouts/Boot';
 
 function MainScreen({ className }: BaseProps) {
     const repository = useMemo(() => {
@@ -14,6 +15,7 @@ function MainScreen({ className }: BaseProps) {
     const [places, setPlaces] = useState<PlaceEntity[]>([]);
     const [activePlace, setActivePlace] = useState<PlaceEntity | null>(null);
     const [toastOpen, setToastOpen] = useState(false);
+    const [isBootUpDone, setBootUpDone] = useState(false);
 
     useEffect(() => {
         if (!repository) return;
@@ -24,6 +26,10 @@ function MainScreen({ className }: BaseProps) {
                 setPlaces(placeList);
             });
     }, [repository]);
+
+    if (!isBootUpDone) {
+        return <Boot onBootUpDone={() => setBootUpDone(true)} />
+    }
 
     return (
         <div className={`${className || ''} w-screen h-screen`}>
