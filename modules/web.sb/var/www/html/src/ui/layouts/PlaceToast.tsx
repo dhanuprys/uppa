@@ -59,14 +59,14 @@ function PlaceToast({
                         <VistaIframe iframeClassName={is360View ? '' : 'md:rounded-2xl'} className={`size-full ${is360View ? '' : 'rounded-2xl'}`} index={activePlace?.vistaIndex} />
                         {
                             is360View
-                                ? <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-auto flex flex-col md:flex-row gap-2">
-                                    <button onClick={() => set360View(false)} className="md:text-xl highlight-button px-6 py-3 rounded-full mb-4 font-semibold flex justify-center gap-2 items-center">
+                                ? <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-auto flex flex-row gap-2">
+                                    <button onClick={() => set360View(false)} className="md:text-xl bg-[rgba(255,255,255,0.9)] px-6 py-3 rounded-full mb-4 font-semibold flex justify-center gap-2 items-center flex-1">
                                         <IoChevronBack />
                                         Kembali
                                     </button>
                                     <button onClick={backToMap} className="md:text-xl border-2 border-blue-50 bg-[rgba(255,255,255,0.8)] px-6 py-3 rounded-full mb-4 font-semibold flex justify-center gap-2 items-center hover:animate-pulse">
                                         <IoMapOutline />
-                                        Kembali ke peta
+                                        <span className="hidden md:block">Kembali ke peta</span>
                                     </button>
                                 </div>
                                 : <div className="absolute top-0 left-0 size-full flex justify-center items-center bg-[rgba(0,0,0,0.6)] md:rounded-2xl">
