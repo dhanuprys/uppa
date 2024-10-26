@@ -3,6 +3,7 @@ import BuildingIcon from '../../assets/images/building.png';
 import SoccerIcon from '../../assets/images/soccer.png';
 import PuraIcon from '../../assets/images/pura.png';
 import RoadIcon from '../../assets/images/road.png';
+import ShopIcon from '../../assets/images/shop.png';
 
 const places: PlaceEntity[] = [
     {
@@ -124,7 +125,7 @@ const places: PlaceEntity[] = [
         vistaIndex: 72,
         coordinate: [-8.133552, 115.132728],
         images: [],
-        iconUrl: BuildingIcon
+        iconUrl: ShopIcon
     },
     {
         id: 'ga-12',
