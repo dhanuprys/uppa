@@ -1,5 +1,4 @@
 import L, { LatLngExpression } from 'leaflet';
-import 'leaflet.offline';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, Marker, Polyline, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import PlaceEntity from '../../data/entities/PlaceEntity';

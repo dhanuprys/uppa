@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes highlight-color {
+    0% {
+        background-color: purple;
+    }
+
+    35% {
+        backgrond-color: red;
+    }
+
+    50% {
+        background-color: blue;
+    }
+
+    100% {
+        background-color: orange;
+    }
+}
+
+.highlight-button {
+    color: white;
+    background-color: purple;
+    animation: highlight-color 4000ms ease-out alternate infinite;
+}
