@@ -3,7 +3,7 @@ import { BaseProps } from '../props';
 import RouteImage from '../../assets/route.png';
 import PlaceEntity from '../../data/entities/PlaceEntity';
 import VistaIframe from '../components/VistaIframe';
-import { useState } from 'react';
+import { useCallback, useEffect, useReducer, useState } from 'react';
 import { IoChevronBack, IoMapOutline } from 'react-icons/io5';
 
 function PlaceToast({
@@ -21,11 +21,32 @@ function PlaceToast({
     onDismissClick: () => void
 }) {
     const [is360View, set360View] = useState(false);
+    const [showVista, setShowVista] = useState(true);
 
-    const backToMap = () => {
+    const backToMap = useCallback(() => {
         set360View(false);
         onCancelClick();
-    }
+    }, []);
+
+    const open360View = useCallback(() => {
+        refresh3DVista();
+        set360View(true);
+    }, []);
+
+    const refresh3DVista = useCallback(() => {
+        setShowVista(false);
+        setTimeout(() => {
+            setShowVista(true);
+        }, 100);
+    }, []);
+
+    useEffect(() => {
+        if (is360View) return;
+        const interval = setTimeout(refresh3DVista, 57_000);
+        return () => {
+            clearTimeout(interval);
+        }
+    }, [activePlace, opened, showVista, is360View]);
 
     return (
         <div className={`${className || ''} max-h-screen overflow-auto transition-all md:duration-300 ${opened ? 'duration-0 md:duration-500 delay-100 !w-screen !h-screen top-0 z-20' : ''} -translate-y-full md:translate-y-0 md:translate-x-full ${activePlace ? '!translate-y-0 md:!translate-x-0' : ''} fixed top-0 right-0 w-screen min-w-screen min-h-[150px] md:w-[450px] md:min-w-[500px] lg:min-w-[560px]`}>
@@ -56,7 +77,7 @@ function PlaceToast({
 
                     {/** PREVIEW 3D VISTA */}
                     {opened && <div className={`${is360View ? 'fixed top-0 left-0 w-screen h-screen' : 'relative'} col-span-3 md:col-span-2 bg-white min-h-[50vh] md:min-h-auto h-full`}>
-                        <VistaIframe iframeClassName={is360View ? '' : 'md:rounded-2xl'} className={`size-full ${is360View ? '' : 'rounded-2xl'}`} index={activePlace?.vistaIndex} />
+                        {showVista && <VistaIframe iframeClassName={is360View ? '' : 'md:rounded-2xl'} className={`size-full ${is360View ? '' : 'rounded-2xl'}`} index={activePlace?.vistaIndex} />}
                         {
                             is360View
                                 ? <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-auto flex flex-row gap-2">
@@ -69,8 +90,8 @@ function PlaceToast({
                                         <span className="hidden md:block">Kembali ke peta</span>
                                     </button>
                                 </div>
-                                : <div className="absolute top-0 left-0 size-full flex justify-center items-center bg-[rgba(0,0,0,0.6)] md:rounded-2xl">
-                                    <button onClick={() => set360View(true)} className="md:text-xl highlight-button px-6 py-3 rounded-full font-semibold flex gap-2 items-center hover:animate-pulse">
+                                : <div className="absolute top-0 left-0 size-full flex justify-center items-center bg-[rgba(0,0,0,0.3)] md:rounded-2xl">
+                                    <button onClick={open360View} className="md:text-xl highlight-button px-6 py-3 rounded-full font-semibold flex gap-2 items-center hover:animate-pulse">
                                         <TbView360Number />
                                         Buka di WorldView
                                     </button>
