@@ -69,7 +69,7 @@ function MapSidebar({
                                 {filteredPlaces.map((place) => {
                                     const isActive = place === activePlace;
                                     return (
-                                        <div onClick={() => onPlaceClick(place)} className={`flex hover:bg-slate-100 hover:cursor-pointer ${isActive ? 'ring-1 ring-blue-300 !bg-blue-50' : ''} p-2 rounded-2xl gap-3 items-center`}>
+                                        <div key={place.id} onClick={() => onPlaceClick(place)} className={`flex hover:bg-slate-100 hover:cursor-pointer ${isActive ? 'ring-1 ring-blue-300 !bg-blue-50' : ''} p-2 rounded-2xl gap-3 items-center`}>
                                             <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 bg-slate-200 rounded-full flex justify-center items-center">
                                                 <img src={place.iconUrl} width="24" height="24" />
                                             </div>
