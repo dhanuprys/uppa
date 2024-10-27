@@ -3,7 +3,7 @@ import { BaseProps } from '../props';
 import RouteImage from '../../assets/route.png';
 import PlaceEntity from '../../data/entities/PlaceEntity';
 import VistaIframe from '../components/VistaIframe';
-import { useCallback, useEffect, useReducer, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { IoChevronBack, IoMapOutline } from 'react-icons/io5';
 
 function PlaceToast({
