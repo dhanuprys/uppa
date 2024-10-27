@@ -17,6 +17,7 @@ function MainScreen({ className }: BaseProps) {
     const [toastOpen, setToastOpen] = useState(false);
     const [isBootUpDone, setBootUpDone] = useState(false);
 
+    // Menyiapkan repository untuk menampung daftar tempat
     useEffect(() => {
         if (!repository) return;
 
@@ -27,6 +28,14 @@ function MainScreen({ className }: BaseProps) {
             });
     }, [repository]);
 
+    useEffect(() => {
+        if (sidebarOpen && window.innerWidth < 768) {
+            setToastOpen(false);
+            setActivePlace(null);
+        }
+    }, [sidebarOpen]);
+
+    // Jika booting belum selesai maka tampilkan mode booting
     if (!isBootUpDone) {
         return <Boot onBootUpDone={() => setBootUpDone(true)} />
     }
