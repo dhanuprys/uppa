@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import MapSidebar from '../layouts/MapSidebar';
 import PlaceToast from '../layouts/PlaceToast';
 import WorldMap from '../layouts/WorldMap';
@@ -7,15 +7,39 @@ import LocalPlaceRepository from '../../data/repositories/LocalPlaceRepository';
 import PlaceEntity from '../../data/entities/PlaceEntity';
 import Boot from '../layouts/Boot';
 
+const SIDEBAR_OPEN_FLAG = 'sB1';
+const SIDEBAR_CLOSE_FLAG = 'sB0';
+
 function MainScreen({ className }: BaseProps) {
     const repository = useMemo(() => {
         return new LocalPlaceRepository();
     }, []);
-    const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
     const [places, setPlaces] = useState<PlaceEntity[]>([]);
     const [activePlace, setActivePlace] = useState<PlaceEntity | null>(null);
     const [toastOpen, setToastOpen] = useState(false);
     const [isBootUpDone, setBootUpDone] = useState(false);
+
+    const toggleSidebar = useCallback((isEnabled: boolean) => {
+        setSidebarOpen(isEnabled);
+        window.location.hash = isEnabled 
+                                ? SIDEBAR_OPEN_FLAG 
+                                : SIDEBAR_CLOSE_FLAG;
+    }, []);
+
+    useEffect(() => {
+        const hashChangeListener = () => {
+            if (window.location.hash !== `#${SIDEBAR_OPEN_FLAG}`) {
+                setSidebarOpen(false);
+            }
+        };
+
+        window.addEventListener('hashchange', hashChangeListener);
+
+        return () => {
+            window.removeEventListener('hashchange', hashChangeListener);
+        }
+    }, []);
 
     // Menyiapkan repository untuk menampung daftar tempat
     useEffect(() => {
@@ -57,12 +81,12 @@ function MainScreen({ className }: BaseProps) {
                         setSidebarOpen(false);
                     }
                 }}
-                onToggleClick={(isEnabled) => setSidebarOpen(isEnabled)} />
+                onToggleClick={toggleSidebar} />
             <PlaceToast
                 opened={toastOpen}
                 activePlace={activePlace}
                 onOpenClick={() => setToastOpen(true)}
-                onCancelClick={() => {setToastOpen(false)}}
+                onCancelClick={() => { setToastOpen(false) }}
                 onDismissClick={() => {
                     setToastOpen(false);
                     setActivePlace(null);
