@@ -32,10 +32,6 @@
     /* thumb and track colors */
 }
 
-body {
-    background: black;
-}
-
 @keyframes highlight-color {
     0% {
         background-color: purple;
