@@ -45,7 +45,7 @@ function WorldMap({
     return (
         <div className={`${className || ''} size-full max-w-full max-h-full overflow-hidden relative`}>
             <MapContainer
-                className="size-full scale-[1.7] lg:scale-[1.9]"
+                className="size-full scale-[1.3] md:scale-[1.7] lg:scale-[1.9]"
                 doubleClickZoom={false}
                 zoomControl={false}
                 scrollWheelZoom={false}
