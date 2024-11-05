@@ -58,13 +58,13 @@ function PlaceToast({
                         <div className={`shrink-0 ${opened ? '' : 'hidden md:block'}`}>
                             <img alt="route-vector" className={`${opened ? 'w-[200px]' : 'w-[90px]'}`} src={RouteImage} />
                         </div>
-                        <div className={`${opened ? 'text-center space-y-6' : ''}`}>
+                        <div className={`${opened ? 'text-center space-y-6 pb-48 md:pb-0' : ''}`}>
                             <h2 className={`text-lg md:text-xl ${opened ? 'font-semibold' : ''}`}>{activePlace?.name || 'Kampus Jineng Dalem'}</h2>
                             <p className={`text-slate-500 leading-4 md:leading-normal ${opened ? 'text-sm md:text-lg' : 'text-xs md:text-sm'}`}>{activePlace?.description[opened ? 'toString' : 'slice'](0, 100) + (opened ? '' : '...') || 'Dolor velit dolore fugiat reprehenderit eu non. Sint ut est incididunt occaecat incididunt qui'}</p>
                             <div className={`mt-2 flex gap-x-2 ${opened ? 'justify-center' : 'justify-end md:justify-start'}`}>
                                 {
                                     opened
-                                        ? <button onClick={onCancelClick} className="text-blue-500 text-sm md:text-base px-6 py-1 rounded-full">Kembali ke Peta</button>
+                                        ? <button onClick={onCancelClick} className="bg-black hover:bg-slate-900 text-white text-sm md:text-base px-6 py-2 rounded-full">Kembali ke Peta</button>
                                         : <>
                                             <button onClick={() => activePlace && onOpenClick(activePlace)} className="bg-blue-600 font-semibold hover:bg-blue-400 text-sm md:text-base text-white px-6 py-1 rounded-full">BUKA</button>
                                             <button onClick={onDismissClick} className="text-blue-500 text-sm md:text-base px-6 py-1 rounded-full">Batal</button>
@@ -80,12 +80,12 @@ function PlaceToast({
                         {showVista && <VistaIframe iframeClassName={is360View ? '' : 'md:rounded-2xl'} className={`size-full ${is360View ? '' : 'rounded-2xl'}`} index={activePlace?.vistaIndex} />}
                         {
                             is360View
-                                ? <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-auto flex flex-row gap-2">
-                                    <button onClick={() => set360View(false)} className="md:text-xl bg-[rgba(255,255,255,0.9)] px-6 py-3 rounded-full mb-4 font-semibold flex justify-center gap-2 items-center flex-1">
+                                ? <div className="fixed top-0 md:top-auto md:bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-auto flex flex-row gap-2">
+                                    <button onClick={() => set360View(false)} className="md:text-xl bg-[rgba(255,255,255,0.9)] px-6 py-3 rounded-full my-4 font-semibold flex justify-center gap-2 items-center flex-1">
                                         <IoChevronBack />
                                         Kembali
                                     </button>
-                                    <button onClick={backToMap} className="md:text-xl border-2 border-blue-50 bg-[rgba(255,255,255,0.8)] px-6 py-3 rounded-full mb-4 font-semibold flex justify-center gap-2 items-center hover:animate-pulse">
+                                    <button onClick={backToMap} className="md:text-xl border-2 border-blue-50 bg-[rgba(255,255,255,0.8)] px-6 py-3 rounded-full my-4 font-semibold flex justify-center gap-2 items-center hover:animate-pulse">
                                         <IoMapOutline />
                                         <span className="hidden md:block">Kembali ke peta</span>
                                     </button>
