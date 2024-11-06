@@ -29,7 +29,19 @@ function MapSidebar({
 
         setFilteredPlaces(
             placeList.filter(place => {
-                return place.name.toLowerCase().includes(searchInput.toLowerCase())
+                const inputLower = searchInput.toLowerCase()
+
+                if (place.name.toLowerCase().includes(inputLower)) {
+                    return true;
+                }
+
+                for (const tag of place.tags) {
+                    if (inputLower.includes(tag)) {
+                        return true;
+                    }
+                }
+
+                return false;
             })
         );
     }, [searchInput]);

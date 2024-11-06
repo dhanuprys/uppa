@@ -11,6 +11,7 @@ class PlaceEntity {
     constructor(
         public id: string,
         public name: string,
+        public tags: string[],
         public description: string,
         public location: string,
         public category: string,
