@@ -14,7 +14,16 @@ function Boot({
     const [isDoubleLogo, setDoubleLogo] = useState(false);
     const [isFinish, setFinish] = useState(false);
 
+    const [bootstart, setBootstart] = useState(false);
+
     useEffect(() => {
+        setTimeout(() => {
+            setBootstart(true);
+        }, 10_000);
+    });
+
+    useEffect(() => {
+        if (!bootstart) return;
         let i = 0;
 
         const intervalId = setInterval(() => {
@@ -35,7 +44,7 @@ function Boot({
         }, 100);
 
         return () => { clearInterval(intervalId) }
-    }, []);
+    }, [bootstart]);
 
     return (
         <div className="w-screen h-screen flex flex-col gap-6 justify-center items-center">
