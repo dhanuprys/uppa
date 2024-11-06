@@ -46,6 +46,10 @@ function Boot({
         return () => { clearInterval(intervalId) }
     }, [bootstart]);
 
+    if (!bootstart) {
+        return <></>;
+    }
+
     return (
         <div className="w-screen h-screen flex flex-col gap-6 justify-center items-center">
             <div className={`fixed top-0 left-0 w-screen h-screen bg-black delay-500 opacity-0 transition-opacity ${isFinish ? 'opacity-100' : ''}`}></div>
