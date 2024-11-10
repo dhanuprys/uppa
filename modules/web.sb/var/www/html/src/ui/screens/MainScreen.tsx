@@ -19,6 +19,7 @@ function MainScreen({ className }: BaseProps) {
     const [activePlace, setActivePlace] = useState<PlaceEntity | null>(null);
     const [toastOpen, setToastOpen] = useState(false);
     const [isBootUpDone, setBootUpDone] = useState(false);
+    const [previousHash, setPreviousHash] = useState<string | null>('#nav1');
 
     const toggleSidebar = useCallback((isEnabled: boolean) => {
         setSidebarOpen(isEnabled);
@@ -29,9 +30,13 @@ function MainScreen({ className }: BaseProps) {
 
     useEffect(() => {
         const hashChangeListener = () => {
+            // const currentHash = window.location.hash;
+
             if (window.location.hash !== `#${SIDEBAR_OPEN_FLAG}`) {
                 setSidebarOpen(false);
             }
+
+            setPreviousHash(window.location.hash);
         };
 
         window.addEventListener('hashchange', hashChangeListener);
@@ -39,7 +44,7 @@ function MainScreen({ className }: BaseProps) {
         return () => {
             window.removeEventListener('hashchange', hashChangeListener);
         }
-    }, []);
+    }, [previousHash]);
 
     // Menyiapkan repository untuk menampung daftar tempat
     useEffect(() => {
@@ -85,11 +90,19 @@ function MainScreen({ className }: BaseProps) {
             <PlaceToast
                 opened={toastOpen}
                 activePlace={activePlace}
-                onOpenClick={() => setToastOpen(true)}
-                onCancelClick={() => { setToastOpen(false) }}
+                onOpenClick={() => {
+                    setToastOpen(true);
+                    // console.log('setting hash');
+                    // window.location.hash = '#nav2';
+                }}
+                onCancelClick={() => {
+                    setToastOpen(false);
+                    // window.location.hash = '#nav1';
+                }}
                 onDismissClick={() => {
                     setToastOpen(false);
                     setActivePlace(null);
+                    // window.location.hash = '';
                 }} />
         </div>
     );

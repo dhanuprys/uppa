@@ -54,11 +54,11 @@ function PlaceToast({
                 <div className={`h-full relative grid grid-cols-3 gap-4 md:items-center bg-white border shadow-sm md:shadow-xl rounded-3xl px-4 py-4 md:py-2 md:!p-4 ${opened ? 'delay-[850ms] !p-0 !rounded-none before:!hidden' : ''} before:z-[-1] before:bg-gradient-to-r before:from-blue-600 before:hidden md:before:block before:absolute before:top-0 before:left-0 before:size-full before:rounded-3xl before:-translate-x-2 before:-translate-y-2`}>
 
                     {/** DETAIL  */}
-                    {!is360View && <div className={`flex gap-2 order-1 bg-white md:order-none ${opened ? 'col-span-3 md:col-span-1 flex-col items-center p-8' : 'col-span-3'}`}>
+                    {!is360View && <div className={`w-full flex gap-2 order-1 bg-white md:order-none ${opened ? 'col-span-3 md:col-span-1 flex-col items-center p-8' : 'col-span-3'}`}>
                         <div className={`shrink-0 ${opened ? '' : 'hidden md:block'}`}>
                             <img alt="route-vector" className={`${opened ? 'w-[200px]' : 'w-[90px]'}`} src={RouteImage} />
                         </div>
-                        <div className={`${opened ? 'text-center space-y-6 pb-48 md:pb-0' : ''}`}>
+                        <div className={`flex-auto ${opened ? 'text-center space-y-6 pb-48 md:pb-0' : ''}`}>
                             <h2 className={`text-lg md:text-xl ${opened ? 'font-semibold' : ''}`}>{activePlace?.name || 'Kampus Jineng Dalem'}</h2>
                             <p className={`text-slate-500 leading-4 md:leading-normal ${opened ? 'text-sm md:text-lg' : 'text-xs md:text-sm'}`}>{activePlace?.description[opened ? 'toString' : 'slice'](0, 100) + (opened ? '' : '...') || 'Dolor velit dolore fugiat reprehenderit eu non. Sint ut est incididunt occaecat incididunt qui'}</p>
                             <div className={`mt-2 flex gap-x-2 ${opened ? 'justify-center' : 'justify-end md:justify-start'}`}>
