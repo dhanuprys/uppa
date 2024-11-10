@@ -14,16 +14,7 @@ function Boot({
     const [isDoubleLogo, setDoubleLogo] = useState(false);
     const [isFinish, setFinish] = useState(false);
 
-    const [bootstart, setBootstart] = useState(false);
-
     useEffect(() => {
-        setTimeout(() => {
-            setBootstart(true);
-        }, 10_000);
-    });
-
-    useEffect(() => {
-        if (!bootstart) return;
         let i = 0;
 
         const intervalId = setInterval(() => {
@@ -44,14 +35,10 @@ function Boot({
         }, 100);
 
         return () => { clearInterval(intervalId) }
-    }, [bootstart]);
-
-    if (!bootstart) {
-        return <></>;
-    }
+    }, []);
 
     return (
-        <div className="w-screen h-screen flex flex-col gap-6 justify-center items-center">
+        <div className={`${className} w-screen h-screen flex flex-col gap-6 justify-center items-center`}>
             <div className={`fixed top-0 left-0 w-screen h-screen bg-black delay-500 opacity-0 transition-opacity ${isFinish ? 'opacity-100' : ''}`}></div>
             <div className={`relative flex justify-center min-w-[200px] md:min-w-[400px] min-h-[100px] md:min-h-[150px] transition-transform duration-[300ms] ${isActiveGap ? '-translate-y-2' : ''}`}>
                 <img className={`absolute top-0 left-1/2 -translate-x-1/2 object-contain w-[100px] h-[100px] md:w-[150px] md:h-[150px] transition-all duration-700 opacity-0 ${isDoubleLogo && !isFinish ? 'opacity-100 translate-x-1/4' : ''}`} src={UppaLogo} />

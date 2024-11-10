@@ -158,7 +158,7 @@ const places: PlaceEntity[] = [
         location: '',
         category: 'Gedung',
         vistaIndex: 14,
-        coordinate: [-8.135101, 115.134550],
+        coordinate: [-8.135303,115.133367],
         images: [],
         iconUrl: BuildingIcon
     }
